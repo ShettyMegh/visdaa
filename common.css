@@ -1,0 +1,61 @@
+#visdaa {
+  max-width: 1600px !important;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.navbar .navbar-brand {
+  letter-spacing: 0.735rem;
+  font-size: 30px;
+}
+
+.nav-item {
+  margin: 0 2rem;
+  border: 1px solid white;
+  padding: 0 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: white;
+}
+
+.nav-item:hover a, .nav-item.active a {
+  color: black !important;
+}
+
+.nav-item a {
+  color: white !important;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+main {
+  min-height: calc(100vh - 108px);
+  background-color: rgb(224, 224, 224);
+}
+
+.visual-container{
+  display: flex;
+}
+
+#visualizer{
+  margin: 0 auto; 
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(35, 178, 255);
+  margin-top: 20px;
+ }
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.4rem 0;
+}
+
+footer h6 {
+  line-height: 1;
+}
