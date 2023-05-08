@@ -1,48 +1,48 @@
 //create node element
-function createNode(input){
-  console.log(input)
-  const nodeCard = document.createElement('div');
+function createNode(input) {
+  console.log(input);
+  const nodeCard = document.createElement("div");
   nodeCard.classList.add("node-card");
-  const node = document.createElement('div');
-  node.classList.add('node');
+  const node = document.createElement("div");
+  node.classList.add("node");
   node.innerHTML = input;
   nodeCard.append(node);
-  const arrowRight = document.createElement('img');
+  const arrowRight = document.createElement("img");
   arrowRight.src = "../media/arrow-right.png";
-  arrowRight.classList.add('arrow-right')
-  nodeCard.append(arrowRight)
+  arrowRight.classList.add("arrow-right");
+  nodeCard.append(arrowRight);
   return nodeCard;
 }
 
 //appending
-function prepend(input){
+function prepend(input) {
   const node = createNode(input);
   const nodeNull = document.querySelector("#node-null");
-  nodeNull.parentNode.insertBefore(node,nodeNull);
+  nodeNull.parentNode.insertBefore(node, nodeNull);
 }
 
-function append(input){
+function append(input) {
   const node = createNode(input);
   const nodeHead = document.querySelector("#node-head");
-  nodeHead.parentNode.insertBefore(node,nodeHead.nextSibling);
+  nodeHead.parentNode.insertBefore(node, nodeHead.nextSibling);
 }
 
-//ADT Btns
-const btns = document.querySelectorAll('#controls button');
-const input = document.querySelector('#input');
+const input = document.querySelector("#input");
 
-input.addEventListener("input",(e)=>{
-  console.log(e.currentTarget.value)
-  if(e.currentTarget.value){
-    toggleDisableBtns(false)
-  } else{
-    toggleDisableBtns(true)
+// disable add btns if no value in input
+input.addEventListener("input", (e) => {
+  console.log(e.currentTarget.value);
+  if (e.currentTarget.value) {
+    toggleDisableBtns(false);
+  } else {
+    toggleDisableBtns(true);
   }
-})
+});
 
-function toggleDisableBtns(disable){
+//toggle btns disable
+function toggleDisableBtns(disable) {
   const nodeLen = getNodeLength();
-  if(nodeLen >= 10){
+  if (nodeLen >= 10) {
     btns[0].disabled = true;
     btns[2].disabled = true;
     return;
@@ -51,24 +51,38 @@ function toggleDisableBtns(disable){
   btns[2].disabled = disable;
 }
 
-function getNodeLength(){
+//node length
+function getNodeLength() {
   return document.querySelectorAll(".node-card").length;
 }
-btns.forEach((btn)=>{
-  btn.addEventListener("click",()=>{
-    switch(btn.dataset.action){
-      case "addFirst": 
+
+const btns = document.querySelectorAll("#controls button");
+
+// ADT btns operations
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    switch (btn.dataset.action) {
+      case "addFirst":
         prepend(input.value);
         input.value = "";
         toggleDisableBtns(true);
         break;
-      case "removeFirst":console.log("rmf");
-      break;
-      case "removeFirst":console.log("rmf");
-      break;
-      case "removeFirst":console.log("rmf");
-      break;
-      default:console.log("none")
+
+      case "removeFirst":
+        console.log("rmf");
+        break;
+
+      case "addLast":
+        append(input.value);
+        input.value = "";
+        toggleDisableBtns(true);
+        break;
+
+      case "removeFirst":
+        console.log("rmf");
+        break;
+      default:
+        console.log("none");
     }
-  })
-})
+  });
+});
