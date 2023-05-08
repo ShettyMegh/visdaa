@@ -87,6 +87,13 @@ button:disabled{
   position: relative;
 }
 
+.node-head--red{
+  background-color: #ff7d2c;
+}
+
 .arrow-right, .node-null{
   align-self: center;
+}
+.arrow-right{
+  width: 50px;
 }

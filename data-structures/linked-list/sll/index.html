@@ -54,22 +54,26 @@
           <div class="control-container">
             <h4 class="text-center">Singly Linked List</h4>
             <div id="controls">
-              <input type="text" class="input" />
-              <button id="addFirst">Append</button>
-              <button id="removeFirst">Remove First</button>
-              <button id="addLast">Prepend</button>
-              <button id="removeLast">Remove Last</button>
+              <input type="text" class="input" id="input" />
+              <button id="addFirst" data-action="addFirst">Append</button>
+              <button id="removeFirst" data-action="removeFirst">
+                Remove First
+              </button>
+              <button id="addLast" data-action="addLast">Prepend</button>
+              <button id="removeLast" data-action="removeLast">
+                Remove Last
+              </button>
             </div>
           </div>
           <div class="visualizer">
             <div class="visual-container">
               <div class="node-card">
+                <div class="node node-head--red">HEAD</div>
+                <img src="../media/arrow-right.png" class="arrow-right" />
+              </div>
+              <div class="node-card">
                 <div class="node">12</div>
-                <img
-                  src="../media/arrow-right.png"
-                  class="arrow-right"
-                  width="50px"
-                />
+                <img src="../media/arrow-right.png" class="arrow-right" />
               </div>
               <div class="node-card">
                 <div class="node">12</div>
