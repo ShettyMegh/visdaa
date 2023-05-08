@@ -13,7 +13,6 @@ function createNode(input) {
   return nodeCard;
 }
 
-
 const input = document.querySelector("#input");
 
 // disable add btns if no value in input
@@ -48,27 +47,29 @@ const btns = document.querySelectorAll("#controls button");
 function append(input) {
   const node = createNode(input);
   const visualContainer = document.querySelector(".visual-container");
-  console.log("sdasd")
-  visualContainer.insertBefore(node,visualContainer.children[getNodeLength() - 1]);
+  console.log("sdasd");
+  visualContainer.insertBefore(
+    node,
+    visualContainer.children[getNodeLength() - 1]
+  );
 }
 
 function prepend(input) {
   const node = createNode(input);
   const visualContainer = document.querySelector(".visual-container");
-  visualContainer.insertBefore(node,visualContainer.children[1]);
-
+  visualContainer.insertBefore(node, visualContainer.children[1]);
 }
 
-function removeFirst(){
+function removeFirst() {
   const nodes = document.querySelectorAll(".node-card");
-  console.log(nodes[1])
-  if(getNodeLength() > 2) nodes[1].remove();
+  console.log(nodes[1]);
+  if (getNodeLength() > 2) nodes[1].remove();
 }
 
-function removeLast(){
+function removeLast() {
   const nodes = document.querySelectorAll(".node-card");
   const nodeLen = getNodeLength();
-  if(nodeLen > 2) nodes[nodeLen-2].remove();
+  if (nodeLen > 2) nodes[nodeLen - 2].remove();
   toggleDisableBtns(false);
 }
 
@@ -83,7 +84,7 @@ btns.forEach((btn) => {
         break;
 
       case "removeFirst":
-          removeFirst();
+        removeFirst();
         break;
 
       case "addLast":
