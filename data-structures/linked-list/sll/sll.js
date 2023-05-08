@@ -15,21 +15,52 @@ function createNode(input){
 }
 
 //appending
+function prepend(input){
+  const node = createNode(input);
+  const nodeNull = document.querySelector("#node-null");
+  nodeNull.parentNode.insertBefore(node,nodeNull);
+}
+
 function append(input){
   const node = createNode(input);
-  const nodeNull = document.querySelector(".node-card:last-child");
-  nodeNull.prepend(node);
+  const nodeHead = document.querySelector("#node-head");
+  nodeHead.parentNode.insertBefore(node,nodeHead.nextSibling);
 }
 
 //ADT Btns
 const btns = document.querySelectorAll('#controls button');
+const input = document.querySelector('#input');
+
+input.addEventListener("input",(e)=>{
+  console.log(e.currentTarget.value)
+  if(e.currentTarget.value){
+    toggleDisableBtns(false)
+  } else{
+    toggleDisableBtns(true)
+  }
+})
+
+function toggleDisableBtns(disable){
+  const nodeLen = getNodeLength();
+  if(nodeLen >= 10){
+    btns[0].disabled = true;
+    btns[2].disabled = true;
+    return;
+  }
+  btns[0].disabled = disable;
+  btns[2].disabled = disable;
+}
+
+function getNodeLength(){
+  return document.querySelectorAll(".node-card").length;
+}
 btns.forEach((btn)=>{
   btn.addEventListener("click",()=>{
-    const input = document.querySelector('#input');
     switch(btn.dataset.action){
       case "addFirst": 
-          append(input.value);
-          input.value = "";
+        prepend(input.value);
+        input.value = "";
+        toggleDisableBtns(true);
         break;
       case "removeFirst":console.log("rmf");
       break;
